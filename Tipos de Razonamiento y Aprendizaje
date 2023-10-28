@@ -1,0 +1,17 @@
+def predecir_siguiente_numero(secuencia):
+    if len(secuencia) < 2:
+        print("Se necesitan al menos dos números en la secuencia.")
+        return None
+
+    diferencia = secuencia[1] - secuencia[0]
+
+    # Predice el siguiente número en la secuencia
+    siguiente_numero = secuencia[-1] + diferencia
+
+    return siguiente_numero
+
+# Ejemplo de uso
+secuencia_ejemplo = [2, 4, 6, 8, 10]
+siguiente_numero_predicho = predecir_siguiente_numero(secuencia_ejemplo)
+
+print(f"La secuencia es {secuencia_ejemplo}, y el siguiente número predicho es: {siguiente_numero_predicho}")
