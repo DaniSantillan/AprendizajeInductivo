@@ -1,0 +1,27 @@
+from m5.rules import Rule
+from m5.bundle import M5Bundle
+from m5.trees import M5RegressionTree
+from m5.m5regressor import M5Regressor
+
+# Datos de ejemplo
+# Aquí deberías reemplazar esto con tus propios datos de entrada y salida
+X = [[1, 2, 3],
+     [4, 5, 6],
+     [7, 8, 9]]
+y = [10, 20, 30]
+
+# Crear un árbol de regresión M5
+tree = M5RegressionTree()
+
+# Ajustar el árbol a los datos
+tree.fit(X, y)
+
+# Crear un regresor M5 con el árbol
+regressor = M5Regressor(tree)
+
+# Imprimir el modelo
+print(regressor)
+
+# Hacer predicciones
+predictions = regressor.predict(X)
+print("Predicciones:", predictions)
