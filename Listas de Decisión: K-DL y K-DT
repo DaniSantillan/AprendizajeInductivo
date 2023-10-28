@@ -1,0 +1,33 @@
+class NodoDecision:
+    def __init__(self, pregunta, opciones):
+        self.pregunta = pregunta
+        self.opciones = opciones
+        self.siguiente_nodo = {}
+
+def tomar_decision(nodo_actual):
+    print(nodo_actual.pregunta)
+    for i, opcion in enumerate(nodo_actual.opciones, 1):
+        print(f"{i}. {opcion}")
+
+    eleccion = int(input("Selecciona una opción (1-{0}): ".format(len(nodo_actual.opciones))))
+    
+    if eleccion < 1 or eleccion > len(nodo_actual.opciones):
+        print("Opción no válida. Por favor, selecciona una opción válida.")
+        return tomar_decision(nodo_actual)
+
+    siguiente_nodo = nodo_actual.siguiente_nodo.get(eleccion)
+    if siguiente_nodo is None:
+        print("No hay más nodos para esta opción. Fin de la decisión.")
+    else:
+        tomar_decision(siguiente_nodo)
+
+# Ejemplo de uso
+nodo_inicial = NodoDecision("¿Tienes hambre?", ["Sí", "No"])
+nodo_hambre = NodoDecision("¿Qué quieres comer?", ["Pizza", "Hamburguesa"])
+nodo_no_hambre = NodoDecision("¿Quieres hacer algo más?", ["Sí", "No"])
+
+# Conexiones entre nodos
+nodo_inicial.siguiente_nodo = {1: nodo_hambre, 2: nodo_no_hambre}
+
+# Iniciar el proceso de toma de decisiones
+tomar_decision(nodo_inicial)
