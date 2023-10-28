@@ -1,0 +1,8 @@
+temperatura = 30  # Ejemplo de temperatura en grados Celsius
+ventas_helados = 100  # Ejemplo de ventas de helados
+
+# Mejor Hipótesis Actual: A medida que la temperatura aumenta, las ventas de helados también aumentan.
+if temperatura > 25:
+    ventas_helados += 20  # Ajuste de ventas de helados basado en la hipótesis
+
+print(f"Temperatura: {temperatura} °C, Ventas de Helados: {ventas_helados}")
