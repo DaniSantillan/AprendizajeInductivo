@@ -1,0 +1,40 @@
+class Repositorio:
+    def __init__(self):
+        self.versiones = []
+        self.version_actual = 0
+
+    def agregar_version(self, cambios):
+        self.version_actual += 1
+        nueva_version = {'numero': self.version_actual, 'cambios': cambios}
+        self.versiones.append(nueva_version)
+        print(f"Versión {self.version_actual} creada con cambios: {cambios}")
+
+    def listar_versiones(self):
+        for version in self.versiones:
+            print(f"Versión {version['numero']}: {version['cambios']}")
+
+class AseguramientoCalidad:
+    def revisar_cambios(self, cambios):
+        # Simulamos un proceso de revisión simple
+        if 'bug' in cambios:
+            print("Se encontraron errores. La revisión de calidad ha fallado.")
+            return False
+        else:
+            print("Revisión de calidad exitosa.")
+            return True
+
+# Uso del sistema
+repo = Repositorio()
+aq = AseguramientoCalidad()
+
+cambios_nueva_funcionalidad = ['nueva_funcionalidad', 'correcciones menores']
+repo.agregar_version(cambios_nueva_funcionalidad)
+
+if aq.revisar_cambios(cambios_nueva_funcionalidad):
+    repo.listar_versiones()
+
+cambios_correccion_bug = ['correccion_bug', 'mejora rendimiento']
+repo.agregar_version(cambios_correccion_bug)
+
+if aq.revisar_cambios(cambios_correccion_bug):
+    repo.listar_versiones()
