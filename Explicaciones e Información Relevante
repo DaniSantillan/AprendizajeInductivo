@@ -1,0 +1,23 @@
+def saludar(nombre):
+    """
+    Esta función saluda a la persona cuyo nombre se proporciona.
+    """
+    return f"Hola, {nombre}."
+
+def obtener_edad(nombre, año_nacimiento):
+    """
+    Esta función calcula la edad de una persona dado su año de nacimiento.
+    """
+    año_actual = 2023  # Puedes actualizar esto con el año actual
+    edad = año_actual - año_nacimiento
+    return f"{nombre} tiene {edad} años."
+
+# Uso de las funciones
+nombre_usuario = input("Ingresa tu nombre: ")
+año_nacimiento_usuario = int(input("Ingresa tu año de nacimiento: "))
+
+saludo = saludar(nombre_usuario)
+informacion_edad = obtener_edad(nombre_usuario, año_nacimiento_usuario)
+
+print(saludo)
+print(informacion_edad)
