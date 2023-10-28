@@ -1,0 +1,31 @@
+from sympy import symbols, Eq, solve
+
+# Definir símbolos
+A, B, C, D = symbols('A B C D')
+
+# Ejemplos positivos y negativos
+positivos = [(1, 1, 1), (1, 0, 0), (0, 1, 0)]
+negativos = [(0, 0, 1), (0, 1, 1), (1, 0, 1)]
+
+# Inicializar la regla vacía
+regla = set()
+
+# Algoritmo FOIL
+for ejemplo_positivo in positivos:
+    # Inicializar la conjunción para el ejemplo positivo actual
+    conjuncion = set(ejemplo_positivo)
+
+    for ejemplo_negativo in negativos:
+        # Verificar si el ejemplo negativo es cubierto por la conjunción actual
+        if not any(Eq(var, val) for var, val in zip(conjuncion, ejemplo_negativo)):
+            # Agregar nuevos literales a la conjunción
+            nuevos_literales = {var: val for var, val in zip(conjuncion, ejemplo_negativo) if var not in conjuncion}
+            conjuncion.update(nuevos_literales)
+
+    # Agregar la conjunción a la regla
+    regla.add(tuple(conjuncion))
+
+# Imprimir la regla final
+print("Regla aprendida:")
+for conjuncion in regla:
+    print(" AND ".join(f"{var}={val}" for var, val in zip([A, B, C], conjuncion)))
